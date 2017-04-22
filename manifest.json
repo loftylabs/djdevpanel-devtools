@@ -1,6 +1,9 @@
 {
-    "name": "Django Dev Panel",
+    "name": "Django Developer Panel",
+    "short_name": "djdevpanel",
     "version": "0.1",
+    "author": "Lofty Labs",
+    "homepage_url": "https://github.com/loftylabs/django-developer-panel",
     "description": "Debugging tools for Django applications.",
     "devtools_page": "devtools.html",
     "background": {
@@ -13,5 +16,7 @@
         "http://*/*",
         "https://*/*"
     ],
-    "manifest_version": 2
+    "manifest_version": 2,
+    "icons": {
+          "128": "icon128.png"}
 }
