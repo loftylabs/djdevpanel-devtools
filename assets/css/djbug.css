@@ -1,0 +1,23 @@
+pre {
+  padding: 0;
+  border: 0;
+}
+
+.settings-table code {
+  white-space: pre;
+}
+
+.current-user code, .session-data code {
+  white-space: pre;
+
+
+}
+.devtools-header {
+  background: #34b6e6;
+  color: #FFF;
+  padding: 1em 2em;
+}
+
+.devtools-header h2 small {
+  color: #e8e8e8;
+}

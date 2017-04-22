@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="assets/css/highlight.default.css" rel="stylesheet">
+		<link href="assets/css/djbug.css" rel="stylesheet">
+	</head>
+	<body>
+    <div class="devtools-header">
+      <h2>
+        DjDev
+        <br><small>Django Version: <span id="djangoVersion"></span></small>
+      </h2>
+    </div>
+    <div style="margin-top: 70px;"></div>
+
+		<div class="container-fluid">
+
+		  <div class="col-md-8">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#queries" aria-controls="home" role="tab" data-toggle="tab">Queries <span class="badge query-count"></span></a></li>
+          <li role="presentation"><a href="#settings" aria-controls="profile" role="tab" data-toggle="tab">Settings</a></li>
+          <li role="presentation"><a href="#warnings" aria-controls="profile" role="tab" class='warnings-tab' data-toggle="tab">Application Checks <span class="badge warning-count"> </a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="queries">
+            <div class="col-md-12">
+              <table class="table query-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Query</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="settings">
+            <div class="col-md-12">
+              <table class="table table-striped settings-table">
+                <thead>
+                  <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="warnings">
+            <div class="col-md-12">
+              <table class="table table-striped warnings-table">
+                <thead>
+                  <tr>
+                    <th>Check ID</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+  	   </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Application State
+          </div>
+          <div class="panel-body" style="overflow-x: scroll;">
+            <table class="table">
+              <tr>
+                <td style="width: 20%;">View</td>
+                <td class='current-view'></td>
+              </tr>
+              <tr>
+                <td>URL Resolution</td>
+                <td>Namespaces: <span class='url-namespaces'></span>
+                    Name: <span class='url-name'></span>
+                </td>
+              </tr>
+              <tr>
+                <td>View *args</td>
+                <td class='current-view-args'></td>
+              </tr>
+              <tr>
+                <tr>
+                <td>View **kwargs</td>
+                <td class='current-view-kwargs'></td>
+              </tr>
+              <tr>
+                <td>Current User</td>
+                <td class='current-user'></td>
+              </tr>
+              <tr>
+                <td>Session Data</td>
+                <td class='session-data'></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade no-django" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="jumbotron" style='margin-bottom: 0;'>
+              <h1>Aww, shucks</h1>
+              <p>Ain't no Django here.  Either that, or you haven't <a href="#" target="_blank">configured your Django install to use Django Dev Panel</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/highlight.pack.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+		<script src="messaging.js"></script>
+		<script src="panel.js"></script>
+
+	</body>
+</html>
