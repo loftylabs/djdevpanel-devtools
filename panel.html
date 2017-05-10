@@ -10,23 +10,21 @@
 		<link href="assets/css/djbug.css" rel="stylesheet">
 	</head>
 	<body>
-    <div class="devtools-header">
-      <h2>
-        DjDev
-        <br><small>Django Version: <span id="djangoVersion"></span></small>
-      </h2>
-    </div>
-    <div style="margin-top: 70px;"></div>
+
+    <div class="se-pre-con"><span>djDevPanel</span></div>
+
+    <div style="margin-top: 1em;"></div>
 
 		<div class="container-fluid">
 
 		  <div class="col-md-8">
 
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-pills" role="tablist">
           <li role="presentation" class="active"><a href="#queries" aria-controls="home" role="tab" data-toggle="tab">Queries <span class="badge query-count"></span></a></li>
           <li role="presentation"><a href="#settings" aria-controls="profile" role="tab" data-toggle="tab">Settings</a></li>
           <li role="presentation"><a href="#warnings" aria-controls="profile" role="tab" class='warnings-tab' data-toggle="tab">Application Checks <span class="badge warning-count"> </a></li>
+          <li role="presentation"><a href="#cbv" aria-controls="profile" role="tab" class='cbv-tab' data-toggle="tab"><span class="cbv-name">CBV Name</span></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -73,17 +71,40 @@
               </table>
             </div>
           </div>
+          <div role="tabpanel" class="tab-pane" id="cbv">
+            <div class="col-md-4">
+              <h5>Method Resolution Order</h5>
+              <ul class='bases-list list-group'>
+              </ul>
+            </div>
+            <div class="col-md-8">
+              <table class="table table-striped cbv-table">
+                <thead>
+                  <tr>
+                    <th>Call</th>
+                    <th>Result</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
   	   </div>
       <div class="col-md-4">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-heading">
-            Application State
+            App State
           </div>
           <div class="panel-body" style="overflow-x: scroll;">
             <table class="table">
+              <tr class="borderless">
+                <td class='borderless'>Django Version</td>
+                <td class='borderless django-version'></td>
+              </tr>
               <tr>
-                <td style="width: 20%;">View</td>
+                <td>View</td>
                 <td class='current-view'></td>
               </tr>
               <tr>
@@ -120,7 +141,7 @@
           <div class="modal-content">
             <div class="jumbotron" style='margin-bottom: 0;'>
               <h1>Aww, shucks</h1>
-              <p>Ain't no Django here.  Either that, or you haven't <a href="#" target="_blank">configured your Django install to use Django Dev Panel</a>.</p>
+              <p>There's no Django here.  Either that, or you haven't <a href="http://github.com/loftylabs/django-developer-panel" target="_blank">configured your Django install to use Django Dev Panel</a>.</p>
             </div>
           </div>
         </div>
