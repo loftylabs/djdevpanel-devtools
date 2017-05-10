@@ -8,6 +8,8 @@ window.djbug_data = {};
 window.djbug_no_django = false;
 
 function render() {
+  // Track a pageview for every render
+  sendObjectToInspectedPage({action: "track-pageview", content: "/render"});
 
   clear_panes();
 
@@ -56,6 +58,11 @@ function clear_panes() {
 
 $().ready(function() {
   render();
+
+  // Capture tab changes and send them to GA
+  $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+    sendObjectToInspectedPage({action: "track-pageview", content: "/tab/" + $(e.target).attr('href') });
+  })
 });
 
 

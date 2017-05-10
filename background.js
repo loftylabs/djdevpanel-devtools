@@ -5,24 +5,27 @@
 // chrome.tabs.*
 // chrome.extension.*
 
+// Standard Google Universal Analytics code
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); // Note: https protocol here
+
+ga('create', 'UA-98927264-1', 'auto');
+ga('set', 'checkProtocolTask', function(){}); // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+ga('require', 'displayfeatures');
+
+
 chrome.extension.onConnect.addListener(function (port) {
 
     var extensionListener = function (message, sender, sendResponse) {
 
-        if(message.tabId && message.content) {
+        if(message.tabId && message.action && message.content) {
 
-                //Evaluate script in inspectedPage
-                if(message.action === 'code') {
-                    chrome.tabs.executeScript(message.tabId, {code: message.content});
-
-                //Attach script to inspectedPage
-                } else if(message.action === 'script') {
-                    chrome.tabs.executeScript(message.tabId, {file: message.content});
-
-                //Pass message to inspectedPage
-                } else {
-                    chrome.tabs.sendMessage(message.tabId, message, sendResponse);
-                }
+          if (message.action === 'track-pageview') {
+            ga('send', 'pageview', message.content);
+          }
 
         // This accepts messages from the inspectedPage and
         // sends them to the panel
