@@ -7,15 +7,14 @@
     "description": "Debugging tools for Django applications.",
     "devtools_page": "devtools.html",
     "background": {
-        "scripts": [
-            "background.js"
-        ]
+        "page": "background.html"
     },
     "permissions": [
         "tabs",
         "http://*/*",
         "https://*/*"
     ],
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
     "manifest_version": 2,
     "icons": {
           "128": "icon128.png"}
