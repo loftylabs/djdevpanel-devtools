@@ -24,8 +24,7 @@ function render() {
         // bind this to the global var
         window.djbug_data = result;
 
-        $('#djangoVersion').html(djangoVersion);
-        $('#debugOutput').html(JSON.stringify(result, null, 4));
+        $('.django-version').html(djangoVersion);
 
         if (window.djbug_no_django) {
           $('.no-django').modal('hide');
@@ -37,14 +36,18 @@ function render() {
     }
   );
 
+  $(".se-pre-con").fadeOut("slow");
+
 }
 
-function clear_panes(){
+function clear_panes() {
   var query_table = $('.query-table tbody');
   var settings_table = $('.settings-table tbody');
   var warnings_pane = $('.warnings-table tbody');
+  var mro_pane = $('.bases-list');
+  var view_data_pane = $('.cbv-table tbody');
 
-  [query_table, settings_table, warnings_pane].forEach(function(el) {
+  [query_table, settings_table, warnings_pane, mro_pane, view_data_pane].forEach(function(el) {
     el.html("");
   });
 
@@ -53,11 +56,11 @@ function clear_panes(){
 
 $().ready(function() {
   render();
-
 });
 
 
 chrome.devtools.network.onNavigated.addListener(function(){
+  $(".se-pre-con").fadeIn("fast");
   window.setTimeout(render, 1000);
 });
 
@@ -122,6 +125,30 @@ function build_panes() {
 
 
   $('.warning-count').html(warning_count);
+
+  // CBV Introspection
+
+  $('.cbv-tab').hide();
+  if (window.djbug_data.view_data.cbv){
+    cbv_data = window.djbug_data.view_data;
+    $('.cbv-tab').show();
+    $('.cbv-name').html(cbv_data.view_name);
+
+    // Populate MRO
+    cbv_data.bases.forEach(function(key) {
+      var base = $('<li>').addClass('list-group-item').text(key);
+      $('.bases-list').append(base);
+    });
+
+    // Populate Method Calls
+    Object.keys(cbv_data.view_methods).forEach(function(key) {
+      var row = $('<tr>').append(
+        $('<td>').html(
+          $('<code>').text(key)));
+      row.append($('<td>').html($('<code>').text(cbv_data.view_methods[key].return)));
+      $('.cbv-table tbody').append(row);
+    });
+  }
 
 
   // Other Info
