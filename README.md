@@ -22,5 +22,6 @@ Firefox Installation
 Unsigned extensions can only be installed in Developer Edition, Nightly, and ESR versions of Firefox.
 
 *  Open [about:config](about:config) and toggle `xpinstall.signatures.required` to True
+*  Open [about:addons](about:addons)
 *  Choose "Install Add-on From File" in the dropdown
 *  Select the precompiled .xpi file inside the dist folder of this repo
