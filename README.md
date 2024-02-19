@@ -15,3 +15,13 @@ Usage
 ===
 
 Install the chrome extension and follow the instructions at [https://github.com/loftylabs/django-developer-panel](https://github.com/loftylabs/django-developer-panel) to add the required middleware to your Django application.
+
+Firefox Installation
+===
+
+Unsigned extensions can only be installed in Developer Edition, Nightly, and ESR versions of Firefox.
+
+*  Open [about:config](about:config) and toggle `xpinstall.signatures.required` to False
+*  Open [about:addons](about:addons)
+*  Choose "Install Add-on From File" in the dropdown
+*  Select the precompiled .xpi file inside the dist folder of this repo
